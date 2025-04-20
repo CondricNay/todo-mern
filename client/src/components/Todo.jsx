@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Todo.css';
 
 function Todo() {
   const [todoList, setTodoList] = useState([]);
@@ -41,19 +42,50 @@ function Todo() {
   };
 
   return (
-    <div>
-      <h2>My TODO List</h2>
-      <input placeholder="Task" onChange={(e) => setNewTask(e.target.value)} />
-      <input placeholder="Status" onChange={(e) => setNewStatus(e.target.value)} />
-      <input type="date" onChange={(e) => setNewDeadline(e.target.value)} />
-      <button onClick={addTodo}>Add</button>
-      <button onClick={handleLogout}>Logout</button>
+    <div className="todo-container">
+      <h2 className="todo-heading">My TODO List</h2>
 
-      <ul>
+      <div className="todo-input-group">
+        <input
+          placeholder="Task"
+          value={newTask}
+          onChange={(e) => setNewTask(e.target.value)}
+          className="auth-input"
+        />
+        <input
+          placeholder="Status"
+          value={newStatus}
+          onChange={(e) => setNewStatus(e.target.value)}
+          className="auth-input"
+        />
+        <input
+          type="date"
+          value={newDeadline}
+          onChange={(e) => setNewDeadline(e.target.value)}
+          className="auth-input"
+        />
+        <button onClick={addTodo} className="auth-button">Add</button>
+        <button
+          onClick={handleLogout}
+          className="auth-button"
+          style={{ backgroundColor: '#dc3545' }}
+        >
+          Logout
+        </button>
+      </div>
+
+      <ul className="todo-list">
         {todoList.map((todo) => (
-          <li key={todo._id}>
-            <strong>{todo.task}</strong> - {todo.status} - {new Date(todo.deadline).toLocaleDateString()}
-            <button onClick={() => deleteTodo(todo._id)}>Delete</button>
+          <li key={todo._id} className="todo-item">
+            <div>
+              <strong>{todo.task}</strong> - {todo.status} - {new Date(todo.deadline).toLocaleDateString()}
+            </div>
+            <button
+              onClick={() => deleteTodo(todo._id)}
+              className="todo-delete-button"
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
