@@ -8,10 +8,14 @@ function Todo() {
   const [newTask, setNewTask] = useState('');
   const [newStatus, setNewStatus] = useState('');
   const [newDeadline, setNewDeadline] = useState('');
+  const [username, setUsername] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
+    const username = localStorage.getItem("username");
+    setUsername(username);
+
     if (!userId) {
       navigate("/login");
       return;
@@ -43,6 +47,10 @@ function Todo() {
 
   return (
     <div className="todo-container">
+      <div className="navbar">
+        <div className="navbar-user">Welcome, {username}</div>
+        <button onClick={handleLogout} className="navbar-button">Logout</button>
+      </div>
       <h2 className="todo-heading">My TODO List</h2>
 
       <div className="todo-input-group">

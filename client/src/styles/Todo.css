@@ -46,3 +46,25 @@
     cursor: pointer;
   }
   
+  .navbar {
+    padding: 20px;
+    margin: 10px;
+  }
+  
+  .navbar-user {
+    font-weight: bold;
+  }
+  
+  .navbar-button {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .navbar-button:hover {
+    background-color: #c82333;
+  }
+  

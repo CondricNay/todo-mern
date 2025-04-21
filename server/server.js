@@ -23,7 +23,7 @@ app.post("/login", (req, res) => {
   UserModel.findOne({ email })
     .then(user => {
       if (user && user.password === password) {
-        res.json({ status: "Success", userId: user._id });
+        res.json({ status: "Success", userId: user._id, username: user.name });
       } else {
         res.json("Invalid credentials");
       }

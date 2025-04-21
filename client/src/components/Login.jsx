@@ -14,6 +14,7 @@ function Login() {
       .then(result => {
         if (result.data.status === "Success") {
           localStorage.setItem("userId", result.data.userId);
+          localStorage.setItem("username", result.data.username);
           navigate('/');
         } else {
           alert("Invalid credentials");
